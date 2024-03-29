@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Encriptador</title>
+        <link rel="stylesheet" href="reset.css">
+        <link rel="stylesheet" href="normalize.css">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    </head>
+
+    <body class = "content__cuerpo">
+        <div class = "contenido">
+            <div class = "content__inputText">
+                <div class = "content__inputText--logo">
+                    <header>
+                        <h1><img src="/imagenes/Logo.png" alt="logo-Alura"></h1>
+                    </header>
+                </div>
+                
+                <div class = "content__inputText--textarea">
+                    <textarea name="texto" id="campoTextoED" cols="30" rows="10" placeholder="Ingrese el texto aquí"></textarea>
+                </div>
+            
+                <div class = "content__inputText--aviso">
+                    <img src="/imagenes/bi_exclamation-circle.png" alt="">
+                    <p>Solo letras minúsculas y sin acentos</p>
+                </div>
+                
+                <div class = "content__inputText--botones">
+                    <button class = "content__inputText--btnencrip">Encriptar</button>
+                    <button class = "content__inputText--btndesencrip">Desencriptar</button>
+                </div>
+            </div>   
+    
+            <div class = "content__printText">
+                <div class = "content__printText--notfoundText">
+                    <img class="areaText__content--img" src="/imagenes/Muñeco.png" alt="">
+                    <div class = "content__printText--parrafos">
+                        <p>Ningún mensaje fue encontrado</p>
+                        <p class = "content__printText--pdos">Ingresa el texto que desees encriptar o desencriptar.</p>
+                    </div>
+                </div>
+                
+                <div class = "content__printText--encripDescrip">
+                    <textarea readonly name="textoEncripDesencript" id="areaTextoED" cols="30" rows="10"></textarea>
+                    <button class = "content__printText--btncopy">Copiar</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
