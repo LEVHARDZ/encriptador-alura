@@ -85,9 +85,10 @@
     border-radius: 32px;
     box-shadow: 0px 24px 32px -8px rgba(0, 0, 0, 0.08); 
 }
-/* Conteido cuando no se encuentra texto */
+/* Contenido cuando no se encuentra texto */
 .content__printText--notfoundText{
     display: none;
+    /* display: grid; */
 }
 
 .areaText__content--img{
@@ -140,4 +141,95 @@
     font-size: 16px;
     border: none;
     color: rgba(10, 56, 113, 1);
+}
+
+/*tablet */
+@media (max-width: 768px) {
+    .content__cuerpo{
+        margin: 0;
+        width: 100%;
+        height: 1384px;
+    }
+    
+    .contenido{
+        display: grid;
+        grid-template-rows: 1001px auto;
+        padding: 74.97px 40px 40px 40px;
+    }
+
+    .content__inputText--aviso{
+        margin: 1%;
+    }
+
+    /* Zona para ver la impresión del resultado */
+    .content__printText{
+        width: 100%;
+        height: 343px;
+    }
+
+    /* Contenido cuando se encuentra texto */
+    .content__printText--encripDescrip{
+        gap: 0;
+        top: 0;
+        padding-top: 32px;
+    }
+
+    #areaTextoED{
+        width: 90%;
+        height: 78%;
+        background: none;
+    }
+
+    .content__printText--btncopy{
+        margin-top: 14px;
+        border: rgba(10, 56, 113, 1);
+        border-width: thin;
+        border-style: solid;
+        background: none;
+    }
+    
+    /* Contenido cuando no se encuentra texto */
+    .content__printText--notfoundText{
+        width: 31%;
+    }
+}
+
+/*mobile */
+@media (max-width: 375px){
+    .content__cuerpo{
+        height: 1715px;
+    }
+
+    .contenido{
+        justify-content: center;
+        grid-template-rows: 1156px auto;
+        padding: 23.97px 16px 24px 16px;
+    }
+
+    .content__inputText--aviso{
+        justify-content: center;
+    }
+
+    .content__inputText--botones{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Zona para ver la impresión del resultado */
+    .content__printText{
+        height: 595px;
+    }
+
+    #areaTextoED{
+        height: 86%;
+    }
+
+    .content__printText--btncopy{
+        width: 90%;
+    }
+
+    /* Contenido cuando no se encuentra texto */
+    .content__printText--notfoundText{
+        width: 95%;
+    }
 }
