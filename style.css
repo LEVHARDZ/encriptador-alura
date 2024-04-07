@@ -64,6 +64,7 @@
     background: rgba(10, 56, 113, 1);
     color: rgba(233, 236, 248, 1);
     border: none;
+    cursor: pointer;
 }
 
 .content__inputText--btndesencrip{
