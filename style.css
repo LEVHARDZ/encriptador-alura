@@ -72,6 +72,7 @@
     color:rgba(10, 56, 113, 1);
     border-style: solid;
     border-color: rgba(10, 56, 113, 1);
+    cursor: pointer;
 }
 
 /* Zona para ver la impresión del resultado */
