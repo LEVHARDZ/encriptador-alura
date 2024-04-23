@@ -2,74 +2,63 @@ const inpuText = document.getElementById('campoTextoED');
 const prinText = document.getElementById('areaTextoED');
 
 //Las "llaves" de encriptación que utilizaremos son las siguientes:
-const arrayKeys = [
-    ['e', 'enter'], //La letra "e" es convertida para "enter"
-    ['i', 'imes'], //La letra "i" es convertida para "imes"
-    ['a', 'ai'], //La letra "a" es convertida para "ai"
-    ['o', 'ober'], //La letra "o" es convertida para "ober"
-    ['u', 'ufat'], //La letra "u" es convertida para "ufat"
-];
-
-
-//No deben ser utilizados letras con acentos ni caracteres especiales
-function validarEntrada(textoValido) {
-    // Expresión regular que permite letras y números solamente
-    let patron = /^[a-zA-Z0-9]*$/;
-    return patron.test(textoValido);
-}
+//La letra "e" es convertida para "enter"
+//La letra "i" es convertida para "imes"
+//La letra "a" es convertida para "ai"
+//La letra "o" es convertida para "ober"
+//La letra "u" es convertida para "ufat"
+const arrayKeysOne = ['e','i','a','o','u'];
+const arrayKeysTwo = ['enter','imes','ai','ober','ufat'];
 
 function btnEncrip(){
-
-    if (validarEntrada(inpuText.value)) {
-            prinText.innerHTML = encriptarText(inpuText.value);
-            document.querySelector('.content__inputText--btndesencrip').setAttribute('disabled',true);
-            document.querySelector('.content__inputText--btndesencrip').style.cursor = "auto";
-    
-    } else {
-        // El texto ingresado contiene caracteres no permitidos
-        valueInvalid();
-    }
-}
-
-function encriptarText(textAencriptar){
-
-    //Debe funcionar solo con letras minúsculas
-    textAencriptar = textAencriptar.toLowerCase();
-    
-    for (let i = 0; i < arrayKeys.length; i++){
-        if(textAencriptar.includes(arrayKeys[i][0])){
-            textAencriptar=textAencriptar.replaceAll(arrayKeys[i][0],arrayKeys[i][1]); 
+    for (let i = 0; i < arrayKeysTwo.length; i++){
+        if (inpuText.value.includes(arrayKeysTwo[i])){
+            valueInvalid();
         }
     }
-    return textAencriptar;
+    prinText.innerHTML = encriptarText(inpuText.value);
+    document.querySelector('.content__inputText--btndesencrip').setAttribute('disabled',true);
+    document.querySelector('.content__inputText--btndesencrip').style.cursor = "auto";
+}
+
+function btnDesencrip(){
+    for (let i = 0; i < arrayKeysOne.length; i++){
+        if (inpuText.value.includes(arrayKeysOne[i]) && inpuText.value.includes(arrayKeysTwo[i])){
+                prinText.innerHTML = desencriptarText(inpuText.value);
+                document.querySelector('.content__inputText--btnencrip').setAttribute('disabled',true);
+                document.querySelector('.content__inputText--btnencrip').style.cursor = "auto";
+                break;
+        } else{
+            document.querySelector('.content__inputText--btnencrip').setAttribute('disabled',true);
+            document.querySelector('.content__inputText--btnencrip').style.cursor = "auto";
+            valueInvalid();
+            }
+    }    
+}
+
+function encriptarText(word){
+    //Debe funcionar solo con letras minúsculas
+    word = word.toLowerCase();
+
+    for (let i = 0; i < arrayKeysOne.length; i++){
+        if(word.includes(arrayKeysOne[i])){
+            word = word.replaceAll(arrayKeysOne[i],arrayKeysTwo[i]);
+        }
+    }
+    return word;
 }
 //Debe ser posible convertir una palabra para la versión encriptada también devolver una palabra encriptada para su versión original.
 
-function btnDesencrip(){
-
-    if (validarEntrada(inpuText.value)) {
-            prinText.innerHTML = desencriptarText(inpuText.value);
-            document.querySelector('.content__inputText--btnencrip').setAttribute('disabled',true);
-            document.querySelector('.content__inputText--btnencrip').style.cursor = "auto";
-    } else {
-        // El texto ingresado contiene caracteres no permitidos
-        valueInvalid();
-    }
-
-}
-
-function desencriptarText(textAdesencriptar){
-
+function desencriptarText(word){
     //Debe funcionar solo con letras minúsculas
-    textAdesencriptar = textAdesencriptar.toLowerCase();
+    word = word.toLowerCase();
     
-    for (let i = 0; i < arrayKeys.length; i++){
-        if(textAdesencriptar.includes(arrayKeys[i][1])){
-            textAdesencriptar=textAdesencriptar.replaceAll(arrayKeys[i][1],arrayKeys[i][0])
+    for (let i = 0; i < arrayKeysTwo.length; i++){
+        if(word.includes(arrayKeysTwo[i])){
+            word = word.replaceAll(arrayKeysTwo[i],arrayKeysOne[i]);
         }
     }
-
-    return textAdesencriptar;
+    return word;
 }
 
 function valueInvalid(){
@@ -85,6 +74,36 @@ function valuesDefault(){
     document.querySelector('.content__inputText--btnencrip').removeAttribute('disabled');
     document.querySelector('.content__inputText--btnencrip').style.cursor = '';
     prinText.innerHTML = '';
+}
+
+//No deben ser utilizados letras con acentos ni caracteres especiales
+function validarEntrada(textoValido) {
+    // Expresión regular que permite letras y números solamente
+    let patron = /^[a-zA-Z0-9]*$/;
+    return patron.test(textoValido);
+}
+
+function copiarTexto() {
+    var textarea = document.getElementById('areaTextoED');
+    var texto = textarea.value;
+
+    navigator.clipboard.writeText(texto).then(function() {
+        // Cambiar el texto del botón
+        var boton = document.querySelector('.content__printText--btncopy');
+        boton.textContent = "¡Texto copiado!";
+        
+        // Restaurar el texto del botón después de un tiempo
+        setTimeout(function() {
+            boton.textContent = "Copiar";
+        }, 5000); // Cambiar el texto de vuelta después de 2 segundos
+    }, function(err) {
+        mostrarMensaje("Error al copiar el texto.");
+    });
+}
+
+function mostrarMensaje(mensaje) {
+    // Muestra un mensaje al usuario
+    alert(mensaje);
 }
 
 inpuText.addEventListener('click',function(){
