@@ -9,6 +9,13 @@ const prinText = document.getElementById('areaTextoED');
 //La letra "u" es convertida para "ufat"
 const arrayKeysOne = ['e','i','a','o','u'];
 const arrayKeysTwo = ['enter','imes','ai','ober','ufat'];
+const btnEncriptar = document.querySelector('.content__inputText--btnencrip');
+const btnDesencriptar = document.querySelector('.content__inputText--btndesencrip');
+const btnCopiarTexto = document.querySelector('.content__printText--btncopy');
+
+btnEncriptar.onclick= btnEncrip;
+btnDesencriptar.onclick= btnDesencrip;
+btnCopiarTexto.onclick= copiarTexto;
 
 function btnEncrip(){
     for (let i = 0; i < arrayKeysTwo.length; i++){

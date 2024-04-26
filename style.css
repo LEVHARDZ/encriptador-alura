@@ -208,7 +208,7 @@
 }
 
 /*mobile */
-@media (max-width: 375px){
+@media (max-width: 425px){
     .content__cuerpo{
         height: 1715px;
     }
